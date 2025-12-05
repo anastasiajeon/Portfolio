@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анастасия Обухова - Портфолио</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Базовые стили и сброс */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #A8D8EA; /* Пастельный голубой */
+            --primary-light: #C9E9F6;
+            --secondary: #FFAAA7; /* Пастельный розовый */
+            --accent: #A0E7E5; /* Пастельный бирюзовый */
+            --dark: #5D5D5D; /* Темно-серый вместо черного */
+            --light: #FDF6F0; /* Кремовый */
+            --gray: #8B8B8B;
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--dark);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--secondary);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(168, 216, 234, 0.3);
+        }
+
+        /* Шапка */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--dark);
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-text h1 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .header-text p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23FFAAA7" fill-opacity="0.1" d="M0,224L48,213.3C96,203,192,181,288,186.7C384,192,480,224,576,229.3C672,235,768,213,864,186.7C960,160,1056,128,1152,133.3C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5;
+        }
+
+        /* Обо мне */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(168, 216, 234, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            background-color: #f5f5f5;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Навыки */
+        .skills {
+            background-color: rgba(168, 216, 234, 0.1);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(168, 216, 234, 0.2);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Опыт */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--accent);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            border: 1px solid rgba(168, 216, 234, 0.2);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--accent);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        /* Хобби */
+        .hobbies {
+            background-color: rgba(255, 170, 167, 0.1);
+        }
+
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .hobby-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 170, 167, 0.2);
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--secondary);
+        }
+
+        .hobby-image {
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hobby-content {
+            padding: 1.5rem;
+        }
+
+        /* Контакты */
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: var(--dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            flex: 1;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(160, 231, 229, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: rgba(253, 246, 240, 0.5);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(160, 231, 229, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Подвал */
+        footer {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--dark);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: var(--dark);
+        }
+
+        .social-link:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            color: white;
+        }
+
+        .ai-info {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 1rem;
+            border-radius: 10px;
+            max-width: 500px;
+            margin-top: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* Адаптивность для планшетов и десктопов */
+        @media (min-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                text-align: left;
+                gap: 2rem;
+            }
+
+            .about-content {
+                flex-direction: row;
+            }
+
+            .contact-content {
+                flex-direction: row;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        /* Заглушка для фото, если оно не загрузится */
+        .profile-img-placeholder {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            font-size: 14px;
+            text-align: center;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="header-bg"></div>
+        <div class="container">
+            <div class="header-content">
+                 <div class="profile-img-placeholder">
+                    <!-- Фото будет загружено через JavaScript -->
+                    <span>Загрузка фото...</span>
+                </div>
+                <div class="header-text">
+                    <h1>Обухова Анастасия Вадимовна</h1>
+                    <p>Дизайнер мебели и 3D-моделлер</p>
+                    <a href="#contact" class="btn">Связаться со мной</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Обо мне -->
+    <section id="about">
+        <div class="container">
+            <h2>Обо мне</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Меня зовут Обухова Анастасия Вадимовна, мне 23 года. В данный момент обучаюсь на 5 курсе в Вузе СПБГУПТД по направлению "Прикладная информатика в дизайне".</p>
+                    <p>До недавнего времени работала в АО "НИТИ"Авангард", где занималась маркированием военной продукции. Этот опыт позволил мне получить знания в области разработки и изготовления микросборок и функциональных узлов в гибридном исполнении.</p>
+                    <p>В настоящее время занимаюсь созданием конструктивов мебельных изделий и дальнейшим их воплощением в жизнь. Мне нравится видеть, как мои идеи превращаются в реальные, функциональные предметы интерьера, которые приносят радость людям.</p>
+                    <p>Владею профессиональными программами для дизайна и проектирования: Adobe Illustrator, Adobe Photoshop, Figma для создания векторных изображений и проектирования интерфейсов. Занимаюсь созданием 3D-объектов в программе Blender, что позволяет визуализировать проекты до их физического воплощения. Для конструирования моделей мебели использую специализированную программу Basis.</p>
+                    <p>Стремлюсь к созданию не только эстетически привлекательных, но и эргономичных, функциональных решений в мебельном дизайне. Верю, что хороший дизайн должен улучшать качество жизни пользователя.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Дизайн интерьера">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Навыки -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Навыки</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-figma"></i>
+                    </div>
+                    <h3>Figma</h3>
+                    <p>Проектирование интерфейсов</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Adobe Illustrator</h3>
+                    <p>Векторная графика</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Adobe Photoshop</h3>
+                    <p>Растровая графика</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Blender</h3>
+                    <p>3D моделирование</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-chair"></i>
+                    </div>
+                    <h3>Basis</h3>
+                    <p>Конструирование мебели</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Опыт работы -->
+    <section id="experience">
+        <div class="container">
+            <h2>Опыт работы</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>АО "НИТИ"Авангард"</h3>
+                        <p>Работала до недавнего времени. Получила ценный опыт в проектной деятельности, разработке конструкторской документации и взаимодействии в команде.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Фриланс</h3>
+                        <p>В настоящее время занимаюсь созданием конструктивов мебельных изделий и их реализацией. Работаю над индивидуальными проектами для частных клиентов.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Хобби -->
+    <section id="hobbies" class="hobbies">
+        <div class="container">
+            <h2>Хобби и увлечения</h2>
+            <div class="hobbies-grid">
+                <div class="hobby-card">
+                    <div class="hobby-image" style="background-image: url('https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="hobby-content">
+                        <h3>Просмотр сериалов и фильмов</h3>
+                        <p>Люблю проводить свободное время за просмотром интересных сериалов и фильмов разных жанров, особенно ценю качественные драмы и арт-хаусное кино.</p>
+                    </div>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-image" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="hobby-content">
+                        <h3>Видеоигры</h3>
+                        <p>Играю как в однопользовательские, так и в кооперативные игры. Нравятся игры с глубоким сюжетом и красивой графикой.</p>
+                    </div>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-image" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="hobby-content">
+                        <h3>Стримы и летс-плеи</h3>
+                        <p>С интересом смотрю стримы и летс-плеи по различным играм. Это позволяет узнавать о новых играх и наблюдать за игровым процессом.</p>
+                    </div>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-image" style="background-image: url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="hobby-content">
+                        <h3>Прослушивание музыки</h3>
+                        <p>Музыка - неотъемлемая часть моей жизни. Слушаю разные жанры, от классики до современной электронной музыки, в зависимости от настроения.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact">
+        <div class="container">
+            <h2>Контакты</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>anastasia_obyhova@mail.ru</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Телефон</h3>
+                            <p>+7 (953) 358-47-97</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Адрес</h3>
+                            <p>Санкт-Петербург, Россия</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Ваш email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Ваше сообщение" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Отправить сообщение</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://vk.com/liiiiiiiixy" target="_blank" class="social-link"><i class="fab fa-vk"></i></a>
+                    <a href="https://t.me/LixyLee" target="_blank" class="social-link"><i class="fab fa-telegram"></i></a>
+                    <a href="https://www.instagram.com/lixylee_?igsh=MTQxNW5hdXh1b256" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p>&copy; 2025 Анастасия Обухова. Все права защищены.</p>
+                <div class="ai-info">
+                    <p><strong>Информация о создании сайта:</strong></p>
+                    <p>Сайт создан с использованием нейросети DeepSeek. Время разработки: около 5 часов.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Загрузка фото из Yapx
+        function loadProfilePhoto() {
+            const imgContainer = document.querySelector('.profile-img-placeholder');
+            const img = new Image();
+            
+            // Прямая ссылка на фото из Yapx
+            img.src = 'https://i.yapx.ru/ar7Zz.jpg';
+            
+            img.onload = function() {
+                imgContainer.innerHTML = '';
+                img.classList.add('profile-img');
+                imgContainer.appendChild(img);
+            };
+            
+            img.onerror = function() {
+                // Если фото не загрузилось, используем заглушку
+                imgContainer.innerHTML = '<i class="fas fa-user" style="font-size: 4rem;"></i>';
+                imgContainer.classList.add('profile-img-placeholder');
+            };
+        }
+
+        // Загружаем фото при загрузке страницы
+        window.addEventListener('DOMContentLoaded', loadProfilePhoto);
+
+        // Простая валидация формы
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Сообщение отправлено! Спасибо за ваше обращение.');
+            this.reset();
+        });
+
+        // Анимация появления элементов при прокрутке
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Наблюдаем за секциями
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
